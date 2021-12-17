@@ -43,7 +43,7 @@ CREATE TABLE `pracownik` (
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
 
 
-/* ####### Create grob ####### */
+/* ####### Create grob ######## */
 
 DROP TABLE IF EXISTS `grob`;
 CREATE TABLE `grob` (
