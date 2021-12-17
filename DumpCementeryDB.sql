@@ -16,7 +16,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 /*
-DB Structure Goes Here...dwa dw w addwa  ftghger
+DB Structure Goes Here...
 */
 
 /* ####### Create Sector ####### */
@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `sektor`;
 CREATE TABLE `sektor` (
   `id` int(11) NOT NULL AUTO_INCREMENT
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
 /* ####### Create Pracownik ####### */
@@ -40,7 +40,7 @@ CREATE TABLE `pracownik` (
     'id_zlecenia' INT DEFAULT NULL,
     'id_kwatery' INT DEFAULT NULL
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
 /* ####### Create grob ######## */
@@ -52,7 +52,7 @@ CREATE TABLE `grob` (
     'id_opiekuna' INT DEFAULT NULL,
     'id_kwatery' INT DEFAULT NULL
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
 /* ####### Create zmarly ####### */
@@ -67,7 +67,7 @@ CREATE TABLE `zmarly` (
     'data_pochowku' INT DEFAULT NULL,
     'id_grobu' INT DEFAULT NULL
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
 /* ####### Create Opiekun ####### */
@@ -79,7 +79,7 @@ CREATE TABLE `opiekun` (
     `nazwisko` varchar(60) DEFAULT NULL,
     'id_grobu' INT DEFAULT NULL
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
 /* ####### Create zlecenie ####### */
@@ -92,7 +92,7 @@ CREATE TABLE `zlecenie` (
     'id_opiekuna' INT DEFAULT NULL,
     'id_grobu' INT DEFAULT NULL
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
 /* ####### Create z-p ####### */
