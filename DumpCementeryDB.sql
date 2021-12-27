@@ -19,106 +19,106 @@
 DB Structure Goes Here...
 */
 
-/* ####### Create Sector ####### */
+/* ####### Create Sectors ####### */
 
-DROP TABLE IF EXISTS `sektor`;
-CREATE TABLE `sektor` (
-  `id` int(11) NOT NULL AUTO_INCREMENT
+DROP TABLE IF EXISTS `Sectors`;
+CREATE TABLE `Sectors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  'number' varchar(15)
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
-/* ####### Create Pracownik ####### */
+/* ####### Create Employees ####### */
 
-DROP TABLE IF EXISTS `pracownik`;
-CREATE TABLE `pracownik` (
+DROP TABLE IF EXISTS `Employees`;
+CREATE TABLE `Employees` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `imie` varchar(60) DEFAULT NULL,
-    `nazwisko` varchar(60) DEFAULT NULL,
-    'data_zatrudnienia' DATE DEFAULT NULL,
-    'wynagrodzenie' DECIMAL(7,5) DEFAULT NULL,
-    'id_zlecenia' INT DEFAULT NULL,
-    'id_kwatery' INT DEFAULT NULL
+    `first_name` varchar(60) DEFAULT NULL,
+    `last_name` varchar(60) DEFAULT NULL,
+    'is_currently_employed' NUMBER DEFAULT 1, /* in mySQL there is no bool values, so i menaged that it could be a number, but only 0 and 1 */
+    'salary' DECIMAL(7,2) DEFAULT NULL,
+    'order_id' INT DEFAULT NULL,
+    'sector_id' INT DEFAULT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
-/* ####### Create grob ######## */
+/* ####### Create Graves ######## */
 
-DROP TABLE IF EXISTS `grob`;
-CREATE TABLE `grob` (
+DROP TABLE IF EXISTS `Graves`;
+CREATE TABLE `Graves` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    'rzad' INT DEFAULT NULL,
-    'id_opiekuna' INT DEFAULT NULL,
-    'id_kwatery' INT DEFAULT NULL
+    'row' INT DEFAULT NULL,
+    'customer_id' INT DEFAULT NULL,
+    'sector_id' INT DEFAULT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
-/* ####### Create zmarly ####### */
+/* ####### Create Corpses ####### */
 
-DROP TABLE IF EXISTS `zmarly`;
-CREATE TABLE `zmarly` (
+DROP TABLE IF EXISTS `Corpses`;
+CREATE TABLE `Corpses` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `imie` varchar(60) DEFAULT NULL,
-    `nazwisko` varchar(60) DEFAULT NULL,
-    'data_urodzenia' DATE DEFAULT NULL,
-    'data_smierci' DECIMAL(7,5) DEFAULT NULL,
-    'data_pochowku' INT DEFAULT NULL,
-    'id_grobu' INT DEFAULT NULL
+    `fist_name` varchar(60) DEFAULT NULL,
+    `last_name` varchar(60) DEFAULT NULL,
+    'birth_date' DATE DEFAULT NULL,
+    'death_date' DATE DEFAULT NULL,
+    'burial_date' DATE DEFAULT NULL,
+    'grave_id' INT DEFAULT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
-/* ####### Create Opiekun ####### */
+/* ####### Create Customer ####### */
 
-DROP TABLE IF EXISTS `opiekun`;
-CREATE TABLE `opiekun` (
+DROP TABLE IF EXISTS `Customer`;
+CREATE TABLE `Customer` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `imie` varchar(60) DEFAULT NULL,
-    `nazwisko` varchar(60) DEFAULT NULL,
-    'id_grobu' INT DEFAULT NULL
+    `fist_name` varchar(60) DEFAULT NULL,
+    `last_name` varchar(60) DEFAULT NULL,
+    'grave_id' INT DEFAULT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
-/* ####### Create zlecenie ####### */
+/* ####### Create Orders ####### */
 
-DROP TABLE IF EXISTS `zlecenie`;
-CREATE TABLE `zlecenie` (
+DROP TABLE IF EXISTS `Orders`;
+CREATE TABLE `Orders` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `opis` varchar(80) DEFAULT NULL,
-    'data_wykonania' DATE DEFAULT NULL,
-    'id_opiekuna' INT DEFAULT NULL,
-    'id_grobu' INT DEFAULT NULL
+    `description` varchar(80) DEFAULT NULL,
+    'customer_id' INT DEFAULT NULL,
+    'grave_id' INT DEFAULT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
-/* ####### Create z-p ####### */
+/* ####### Create order_on_customer ####### */
 
-DROP TABLE IF EXISTS `z-p`;
-CREATE TABLE `z-p` (
-  `id_zlecenia` int(11) DEFAULT NULL,
-  `id_pracownika` int(11) DEFAULT NULL
+DROP TABLE IF EXISTS `order_on_customer`;
+CREATE TABLE `order_on_customer` (
+  `order_id` int(11) DEFAULT NULL,
+  `employee_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-/* ####### Create z-o ####### */
+/* ####### Create orders_on_customers ####### */
 
-DROP TABLE IF EXISTS `z-o`;
-CREATE TABLE `z-o` (
-  `id_zlecenia` int(11) DEFAULT NULL,
-  `id_opiekuna` int(11) DEFAULT NULL
+DROP TABLE IF EXISTS `orders_on_customers`;
+CREATE TABLE `orders_on_customers` (
+  `order_id` int(11) DEFAULT NULL,
+  `employee_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-/* ####### Create g-o ####### */
+/* ####### Create graves_on_customers ####### */
 
-DROP TABLE IF EXISTS `g-o`;
-CREATE TABLE `g-o` (
-  `id_grobu` int(11) DEFAULT NULL,
-  `id_opiekuna` int(11) DEFAULT NULL
+DROP TABLE IF EXISTS `graves_on_customers`;
+CREATE TABLE `graves_on_customers` (
+  `grave_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
